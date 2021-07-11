@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Game_Pass_Save_Tranfer</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <TargetPlatformVersion>10.0.10240</TargetPlatformVersion>
+    <StartupObject />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WinRTInitializeWithWindow.WPF">
+      <HintPath>..\libs\WinRTInitializeWithWindow.WPF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

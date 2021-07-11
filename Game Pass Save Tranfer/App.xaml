@@ -1,0 +1,9 @@
+﻿<Application x:Class="Game_Pass_Save_Tranfer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Game_Pass_Save_Tranfer"
+             StartupUri="/Views/MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

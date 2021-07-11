@@ -1,0 +1,54 @@
+﻿<Window x:Class="Game_Pass_Save_Tranfer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Game_Pass_Save_Tranfer"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="Xbox Live Save Exporter" Height="450" Width="400" MinHeight="150" MinWidth="200">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <ListView x:Name="lstGames" ItemsSource="{Binding gameCollection}" SelectionChanged="lstGames_SelectionChanged">
+            <!--ItemsSource="{Binding gameCollection}"-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Image Grid.RowSpan="2" Source="{Binding Logo}" />
+                        <TextBlock Grid.Column="1" Text="{Binding DisplayName}" Margin="5"/>
+                        <TextBlock Grid.Column="1" Grid.Row="1" Text="" Margin="5" Foreground="Gray"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <!--<local:Game DisplayName="test" Logo="C:\Program Files\WindowsApps\CompulsionGamesInc.WeHappyFew_1.8.8987.2_x64__eae46zy90r9xg\Resources\StoreLogo.png"/>-->
+        </ListView>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Width" Value="80" />
+                    <Setter Property="Margin" Value="10, 5" />
+                </Style>                
+            </Grid.Resources>
+
+            <Button x:Name="btnExport" Content="Export" IsEnabled="False" Click="btnExport_Click" />
+            <Button x:Name="btnAbout" Content="About" Grid.Column="1" Click="btnAbout_Click"/>
+        </Grid>
+    </Grid>
+</Window>

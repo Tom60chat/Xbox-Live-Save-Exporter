@@ -1,0 +1,35 @@
+﻿<Window x:Class="Game_Pass_Save_Tranfer.TranferWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Game_Pass_Save_Tranfer"
+        mc:Ignorable="d"
+        Title="Tranfering..." Height="200" Width="400" WindowStartupLocation="CenterOwner" WindowStyle="ToolWindow" ResizeMode="NoResize" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style x:Key="CommonStyle" TargetType="FrameworkElement">
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="StackPanel" BasedOn="{StaticResource CommonStyle}" />
+            <Style TargetType="Image" BasedOn="{StaticResource CommonStyle}" />
+            <Style TargetType="TextBlock" BasedOn="{StaticResource CommonStyle}" />
+            <Style TargetType="ProgressBar" BasedOn="{StaticResource CommonStyle}" />
+        </Grid.Resources>
+        
+        <StackPanel x:Name="pnlGame" Grid.Row="1" Orientation="Horizontal">
+            <Image x:Name="imgGameLogo" />
+            <TextBlock x:Name="txtGameTitle" Text="Game Name"/>
+        </StackPanel>
+        <TextBlock x:Name="txtStatut" Grid.Row="2" Text="Tranfering..." Foreground="DimGray" />
+        <ProgressBar x:Name="progressBar" Grid.Row="3" Height="20" Width="300" Maximum="1" />
+    </Grid>
+</Window>
