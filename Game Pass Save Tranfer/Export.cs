@@ -1,17 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
-using Windows.Storage.Pickers;
 
 namespace Game_Pass_Save_Tranfer
 {
     public class Export
     {
+        #region Variables
+        /// <summary> Invoked when progress change </summary>
         public EventHandler<double> OnProgress;
+        /// <summary> Invoked when a new file is being exported </summary>
+        public EventHandler<string> OnExport;
+        #endregion
 
+        #region Methods
+        /// <summary> Export a game save file to the desired folder </summary>
+        /// <param name="game">The game to export</param>
+        /// <param name="folder">The destination folder</param>
+        /// <returns>true the task is successful, else false</returns>
         public async Task<bool> Start(Game game, StorageFolder folder)
         {
             double progres;
@@ -64,6 +71,8 @@ namespace Game_Pass_Save_Tranfer
                         var containerFile = containerFiles[s];
                         var sourceFile = await StorageFile.GetFileFromPathAsync(containerFile.Path);
 
+                        if (OnExport != null) OnExport(this, Properties.Resource.Exporting + " " + containerFile.Name);
+
                         await sourceFile.CopyAsync(tranferFolder, containerFile.Name, NameCollisionOption.GenerateUniqueName);
                     }
                 }
@@ -71,5 +80,6 @@ namespace Game_Pass_Save_Tranfer
 
             return true;
         }
+        #endregion
     }
 }

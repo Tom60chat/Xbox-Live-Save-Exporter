@@ -7,16 +7,76 @@
     <UseWPF>true</UseWPF>
     <TargetPlatformVersion>10.0.10240</TargetPlatformVersion>
     <StartupObject />
+    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <AssemblyName>Xbox Live Save Exporter</AssemblyName>
+    <Authors>Tom Olivier</Authors>
+    <Company>KatyCorp</Company>
+    <PackageId>Xbox Live Save Export</PackageId>
+    <Product>Xbox Live Save Exporter</Product>
+    <Description>Export your save files from your Xbox Live or Game Pass games, then manually upload them to Steam or another platform.
+</Description>
+    <PackageProjectUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</PackageProjectUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Logo Banner long 2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Logo Banner long 2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
+    <PackageReference Include="Octokit" Version="0.50.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="WinRTInitializeWithWindow.WPF">
       <HintPath>..\libs\WinRTInitializeWithWindow.WPF.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.pl.resx">
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.de.resx">
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.ru.resx">
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.pt.resx">
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.es.resx">
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.fr.resx">
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

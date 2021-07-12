@@ -13,5 +13,24 @@ namespace Game_Pass_Save_Tranfer
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            var gitHub = new GitHubHelper("Tom60chat", "Xbox-Live-Save-Exporter");
+
+            Task.Factory.StartNew(async () =>
+            {
+                if (await gitHub.CheckNewerVersion())
+                {
+                    var answer = MessageBox.Show(
+                        Game_Pass_Save_Tranfer.Properties.Resource.UpdateAvailableDialog,
+                        Game_Pass_Save_Tranfer.Properties.Resource.UpdateAvailable,
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (answer == MessageBoxResult.Yes)
+                        gitHub.Update();
+                }
+            });
+        }
     }
 }

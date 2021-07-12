@@ -1,19 +1,8 @@
 ﻿using mveril.WinRT.InitializeWithWindow.WPF;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Windows.Storage.Pickers;
 using Windows.System;
 
@@ -24,19 +13,24 @@ namespace Game_Pass_Save_Tranfer
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ObservableCollection<Game> gameCollection { get; set; }
+        #region Properties
+        public ObservableCollection<Game> gameCollection { get; private set; }
+        #endregion
 
+        #region Constructors
         public MainWindow()
         {
             gameCollection = new ObservableCollection<Game>();
             InitializeComponent();
 
-            var games = SaveGameHelper.GetGames();
+            var games = Game.GetGames();
 
             foreach (var game in games)
                 gameCollection.Add(game);
         }
+        #endregion
 
+        #region Methods
         private void lstGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             btnExport.IsEnabled = e.AddedItems.Count > 0;
@@ -55,37 +49,36 @@ namespace Game_Pass_Save_Tranfer
 
             if (folder != null)
             {
-                var tranferWindow = new TranferWindow();
+                var exportWindow = new TranferWindow();
 
-                tranferWindow.Show();
+                exportWindow.Show();
 
                 foreach (var selectedItem in lstGames.SelectedItems)
                 {
                     if (selectedItem is Game game)
                     {
-                        tranferWindow.SetGame(game);
+                        exportWindow.SetGame(game);
 
-                        tranferWindow.SetStatut("Transfering...");
+                        exportWindow.SetStatut(Properties.Resource.Exporting + "...");
 
-                        var transfer = new Export();
+                        var export = new Export();
 
-                        transfer.OnProgress += (sender, progress) => tranferWindow.SetProgress(progress);
+                        export.OnProgress += (sender, progress) => exportWindow.SetProgress(progress);
+                        export.OnExport += (sender, statut) => exportWindow.SetStatut(statut);
 
-                        await transfer.Start(game, folder);
+                        await export.Start(game, folder);
                     }
                 }
 
-                tranferWindow.Close();
+                exportWindow.Close();
                 await Launcher.LaunchFolderAsync(folder);
             }
         }
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(
-                "Made by Tom Oliver" + Environment.NewLine +
-                "This program is not not affiliated with Microsoft and these subsidiaries.",
-                "About");
+            MessageBox.Show(Properties.Resource.AboutDialog, Properties.Resource.About);
         }
+        #endregion
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Game_Pass_Save_Tranfer
 {
@@ -10,25 +9,45 @@ namespace Game_Pass_Save_Tranfer
     /// </summary>
     class ContainerFile
     {
+        #region Properties
+        /// <summary> File name </summary>
         public string Name { get; private set; }
+        /// <summary> File guid </summary>
         public Guid Guid { get; private set; }
+        /// <summary> File path </summary>
         public string Path { get; private set; }
+        #endregion
 
+        #region Constructors
         public ContainerFile(string name, Guid guid, string path)
         {
             Name = name;
             Guid = guid;
             Path = path;
         }
+        #endregion
 
-        public static IList<ContainerFile> TryParse(ContainerFolder folder)
+        #region Methods
+        /// <summary>
+        /// Try to parse the sub container from the container folder
+        /// </summary>
+        /// <param name="folder">The folder container</param>
+        /// <returns>The list of file</returns>
+        public static IList<ContainerFile> TryParse(ContainerFolder folder) => TryParse(System.IO.Path.Combine(folder.Path, "container." + folder.Id));
+
+        /// <summary>
+        /// Try to parse the sub container
+        /// </summary>
+        /// <param name="path">Path to the container</param>
+        /// <returns>The list of file</returns>
+        public static IList<ContainerFile> TryParse(string path)
         {
             List<ContainerFile> files = new List<ContainerFile>();
 
             try
             {
                 // Open a filestream with the user selected file
-                FileStream file = new FileStream(System.IO.Path.Combine(folder.Path, "container." + folder.Id), FileMode.Open);
+                FileStream file = new FileStream(path, FileMode.Open);
 
                 // Create a binary reader that will be used to read the file
                 BinaryReader reader = new BinaryReader(file);
@@ -72,9 +91,9 @@ namespace Game_Pass_Save_Tranfer
                     // The second guid is the same
                     string subSecondGuid = BitConverter.ToString(guid6).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid7).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid8).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid9).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid10).Replace("-", string.Empty);
 
-                    string path = System.IO.Path.Combine(folder.Path, guid.ToString("N").ToUpper());
+                    string filePath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(path), guid.ToString("N").ToUpper());
 
-                    files.Add(new ContainerFile(fileName, guid, path));
+                    files.Add(new ContainerFile(fileName, guid, filePath));
                 }
 
                 reader.Dispose();
@@ -87,5 +106,6 @@ namespace Game_Pass_Save_Tranfer
                 return null;
             }
         }
+        #endregion
     }
 }

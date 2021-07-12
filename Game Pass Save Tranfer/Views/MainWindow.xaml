@@ -4,16 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Game_Pass_Save_Tranfer"
+        xmlns:p = "clr-namespace:Game_Pass_Save_Tranfer.Properties"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="Xbox Live Save Exporter" Height="450" Width="400" MinHeight="150" MinWidth="200">
+        Title="{x:Static p:Resource.Title}" Height="450" Width="400" MinHeight="150" MinWidth="200" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <ListView x:Name="lstGames" ItemsSource="{Binding gameCollection}" SelectionChanged="lstGames_SelectionChanged">
+        <Image Source="/Assets/Logo Banner long 2.png" />
+        <ListView x:Name="lstGames" Grid.Row="1" ItemsSource="{Binding gameCollection}" SelectionChanged="lstGames_SelectionChanged">
             <!--ItemsSource="{Binding gameCollection}"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -35,7 +38,7 @@
 
             <!--<local:Game DisplayName="test" Logo="C:\Program Files\WindowsApps\CompulsionGamesInc.WeHappyFew_1.8.8987.2_x64__eae46zy90r9xg\Resources\StoreLogo.png"/>-->
         </ListView>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
@@ -47,8 +50,8 @@
                 </Style>                
             </Grid.Resources>
 
-            <Button x:Name="btnExport" Content="Export" IsEnabled="False" Click="btnExport_Click" />
-            <Button x:Name="btnAbout" Content="About" Grid.Column="1" Click="btnAbout_Click"/>
+            <Button x:Name="btnExport" Content="{x:Static p:Resource.Export}" IsEnabled="False" Click="btnExport_Click" />
+            <Button x:Name="btnAbout" Content="{x:Static p:Resource.About}" Grid.Column="1" Click="btnAbout_Click"/>
         </Grid>
     </Grid>
 </Window>

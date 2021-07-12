@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Game_Pass_Save_Tranfer
 {
     class Container
     {
+        #region Constructors
         public Container(string friendlyName, string packageFullName, string id, Guid guid, IList<ContainerFolder> folders, string path)
         {
             FriendlyName = friendlyName;
@@ -16,14 +16,29 @@ namespace Game_Pass_Save_Tranfer
             Folders = folders;
             Path = path;
         }
+        #endregion
 
+        #region Properties
+        /// <summary> The friendly name of the package </summary>
         public string FriendlyName { get; private set; }
+        /// <summary> The full name of the package</summary>
         public string PackageFullName { get; private set; }
+        /// <summary> The id of the sub container</summary>
         public string Id { get; private set; }
+        /// <summary> Unknown GUID </summary>
         public Guid Guid { get; private set; }
+        /// <summary> List of folders </summary>
         public IList<ContainerFolder> Folders { get; private set; }
+        /// <summary> Path to the container index file </summary>
         public string Path { get; private set; }
+        #endregion
 
+        #region Methods
+        /// <summary>
+        /// Try to parse the index container
+        /// </summary>
+        /// <param name="path">Path to the index container</param>
+        /// <returns>The container and its folders</returns>
         public static Container TryParse(string path)
         {
             List<ContainerFolder> folders = new List<ContainerFolder>();
@@ -105,5 +120,6 @@ namespace Game_Pass_Save_Tranfer
                 return null;
             }
         }
+        #endregion
     }
 }
