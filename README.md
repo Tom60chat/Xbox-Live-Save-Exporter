@@ -21,9 +21,9 @@ Only works on Windows 10 version 1507 (build 10240) or newer
 
 ## Screenshots
 <p align="center">
-  ![](Store/Screenshot.png)
+  <img src="Store/Screenshot.png"/>
 </p>
 
 <p align="center">
-  ![](Store/Screenshot2.png)
+  <img src="Store/Screenshot2.png"/>
 </p>
