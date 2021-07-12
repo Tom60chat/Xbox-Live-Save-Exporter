@@ -1,7 +1,7 @@
 # Xbox-Live-Save-Exporter
 Export your save files from your Xbox Live or Game Pass games, then manually upload them to Steam or another platform.
 
-<img align="right" src="Store/Logo.png"/>
+<img src="Store/Logo.png"/>
 
 <!--[Website](https://tom60chat.wixsite.com/katycorp/post/?lang=en)-->
 
