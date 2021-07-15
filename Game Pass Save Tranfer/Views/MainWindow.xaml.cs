@@ -1,12 +1,13 @@
 ﻿using mveril.WinRT.InitializeWithWindow.WPF;
 using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Windows.Storage.Pickers;
 using Windows.System;
 
-namespace Game_Pass_Save_Tranfer
+namespace Xbox_Live_Save_Exporter
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -22,18 +23,25 @@ namespace Game_Pass_Save_Tranfer
         {
             gameCollection = new ObservableCollection<Game>();
             InitializeComponent();
-
-            var games = Game.GetGames();
-
-            foreach (var game in games)
-                gameCollection.Add(game);
+            _ = InitializeAsync();
         }
         #endregion
 
         #region Methods
+        private async Task InitializeAsync()
+        {
+            var games = await Game.GetGames();
+
+            foreach (var game in games)
+                gameCollection.Add(game);
+
+            progressRing.Visibility = Visibility.Collapsed; // Kinda lazy to use XAML island, don't want to overload the app
+            txtNoSaveFound.Visibility = games.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+        }
+
         private void lstGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnExport.IsEnabled = e.AddedItems.Count > 0;
+            btnExport.IsEnabled = lstGames.SelectedItems.Count > 0;
         }
 
         private async void btnExport_Click(object sender, RoutedEventArgs e)
@@ -51,10 +59,13 @@ namespace Game_Pass_Save_Tranfer
             {
                 var exportWindow = new TranferWindow();
 
+                IsEnabled = false;
                 exportWindow.Show();
 
-                foreach (var selectedItem in lstGames.SelectedItems)
+                for (int i = 0; i < lstGames.SelectedItems.Count; i++)
                 {
+                    var selectedItem = lstGames.SelectedItems[i];
+
                     if (selectedItem is Game game)
                     {
                         exportWindow.SetGame(game);
@@ -63,14 +74,25 @@ namespace Game_Pass_Save_Tranfer
 
                         var export = new Export();
 
-                        export.OnProgress += (sender, progress) => exportWindow.SetProgress(progress);
-                        export.OnExport += (sender, statut) => exportWindow.SetStatut(statut);
+                        export.OnProgress += (_sender, progress) =>
+                        {
+                            // TODO; Split progress bar with number of game
+                            /*double Xl = (double)1 / (double)lstGames.SelectedItems.Count;
+                            double Xr = Xl * i;
+
+                            double Yl = (double)Xl / 1;
+                            double Yr = Yl * progress + Xr;*/
+                            exportWindow.SetProgress(progress);
+                        };
+                        export.OnExport += (sender, statut) => exportWindow.SetStatut(Properties.Resource.Exporting + " " + statut);
 
                         await export.Start(game, folder);
                     }
                 }
 
                 exportWindow.Close();
+                IsEnabled = true;
+
                 await Launcher.LaunchFolderAsync(folder);
             }
         }

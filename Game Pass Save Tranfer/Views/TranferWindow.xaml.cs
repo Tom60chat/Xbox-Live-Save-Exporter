@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace Game_Pass_Save_Tranfer
+namespace Xbox_Live_Save_Exporter
 {
     /// <summary>
     /// Logique d'interaction pour TranferWindow.xaml
@@ -13,6 +13,7 @@ namespace Game_Pass_Save_Tranfer
         public TranferWindow()
         {
             InitializeComponent();
+            Title = Properties.Resource.Exporting + "...";
         }
         #endregion
 

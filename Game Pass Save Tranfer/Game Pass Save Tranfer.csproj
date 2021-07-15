@@ -3,11 +3,11 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Game_Pass_Save_Tranfer</RootNamespace>
+    <RootNamespace>Xbox_Live_Save_Exporter</RootNamespace>
     <UseWPF>true</UseWPF>
     <TargetPlatformVersion>10.0.10240</TargetPlatformVersion>
     <StartupObject />
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Icon colored.ico</ApplicationIcon>
     <AssemblyName>Xbox Live Save Exporter</AssemblyName>
     <Authors>Tom Olivier</Authors>
     <Company>KatyCorp</Company>
@@ -22,11 +22,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Logo Banner medium 2.png" />
     <None Remove="Logo Banner long 2.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\Logo Banner long 2.png" />
+    <Resource Include="Assets\Logo Banner medium 2.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,5 +79,7 @@
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Import Project="..\Xbox Live Save Exporter.Shared\Xbox Live Save Exporter.Shared.projitems" Label="Shared" />
 
 </Project>

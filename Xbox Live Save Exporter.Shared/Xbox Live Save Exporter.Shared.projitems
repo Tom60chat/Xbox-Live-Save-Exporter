@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>ede0b84b-47c4-467b-819f-02bd2432fd26</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Xbox_Live_Save_Exporter.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)BinaryReaderHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Export.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Container.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ContainerFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ContainerFolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Game.cs" />
+  </ItemGroup>
+</Project>

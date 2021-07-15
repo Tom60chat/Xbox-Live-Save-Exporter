@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Game_Pass_Save_Tranfer.Properties {
+namespace Xbox_Live_Save_Exporter.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Game_Pass_Save_Tranfer.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Game_Pass_Save_Tranfer.Properties.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Xbox_Live_Save_Exporter.Properties.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -80,6 +80,24 @@ namespace Game_Pass_Save_Tranfer.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Export your save files from your Xbox Live or Game Pass games to a folder, then manually transfer them to Steam or another platform..
+        /// </summary>
+        public static string AppDescription {
+            get {
+                return ResourceManager.GetString("AppDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Export.
         /// </summary>
         public static string Export {
@@ -94,6 +112,56 @@ namespace Game_Pass_Save_Tranfer.Properties {
         public static string Exporting {
             get {
                 return ResourceManager.GetString("Exporting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à We did not find any game saves.
+        /// </summary>
+        public static string NoSaveFound {
+            get {
+                return ResourceManager.GetString("NoSaveFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This application needs access to the File System to be able to export your game saves.
+        ///
+        ///- Click on the Settings button
+        ///- Click on the File system button
+        ///- Restart the app..
+        /// </summary>
+        public static string PermissionDialog {
+            get {
+                return ResourceManager.GetString("PermissionDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Save
+        ///Exporter.
+        /// </summary>
+        public static string SaveExporter {
+            get {
+                return ResourceManager.GetString("SaveExporter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         
@@ -122,6 +190,15 @@ namespace Game_Pass_Save_Tranfer.Properties {
         public static string UpdateAvailableDialog {
             get {
                 return ResourceManager.GetString("UpdateAvailableDialog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

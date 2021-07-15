@@ -1,13 +1,13 @@
-﻿<Window x:Class="Game_Pass_Save_Tranfer.MainWindow"
+﻿<Window x:Class="Xbox_Live_Save_Exporter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Game_Pass_Save_Tranfer"
-        xmlns:p = "clr-namespace:Game_Pass_Save_Tranfer.Properties"
+        xmlns:local="clr-namespace:Xbox_Live_Save_Exporter"
+        xmlns:p = "clr-namespace:Xbox_Live_Save_Exporter.Properties"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="{x:Static p:Resource.Title}" Height="450" Width="400" MinHeight="150" MinWidth="200" WindowStartupLocation="CenterScreen">
+        Title="{x:Static p:Resource.Title}" Height="450" Width="400" MinHeight="200" MinWidth="250" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,7 +15,22 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
-        <Image Source="/Assets/Logo Banner long 2.png" />
+        
+        <!-- <Image Source="/Assets/Logo Banner long 2.png" MaxHeight="70" HorizontalAlignment="Left" /> -->
+        <Viewbox MaxHeight="70" HorizontalAlignment="Left">
+            <Grid Height="70">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+
+                <Image Source="/Assets/Logo Banner medium 2.png"/>
+                <!-- <TextBlock Grid.Column="1" TextAlignment="Right" FontSize="27" FontFamily="Arial" VerticalAlignment="Center"><Run Text="Save"/><LineBreak/><Run Text="Exporter"/></TextBlock> -->
+                <TextBlock Grid.Column="1" TextAlignment="Right" FontSize="27" FontFamily="Arial" VerticalAlignment="Center" Text="{x:Static p:Resource.SaveExporter}" />
+            </Grid>
+        </Viewbox>
+        
         <ListView x:Name="lstGames" Grid.Row="1" ItemsSource="{Binding gameCollection}" SelectionChanged="lstGames_SelectionChanged">
             <!--ItemsSource="{Binding gameCollection}"-->
             <ListView.ItemTemplate>
@@ -53,5 +68,8 @@
             <Button x:Name="btnExport" Content="{x:Static p:Resource.Export}" IsEnabled="False" Click="btnExport_Click" />
             <Button x:Name="btnAbout" Content="{x:Static p:Resource.About}" Grid.Column="1" Click="btnAbout_Click"/>
         </Grid>
+
+        <TextBlock x:Name="txtNoSaveFound" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Text="{x:Static p:Resource.NoSaveFound}" />
+        <TextBlock x:Name="progressRing" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="..."/>
     </Grid>
 </Window>
