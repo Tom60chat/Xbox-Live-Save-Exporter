@@ -8,8 +8,8 @@ Export your local save files from your Xbox Live or Game Pass games, then manual
 <!--[Website](https://tom60chat.wixsite.com/katycorp/post/?lang=en)-->
 
 ## Features
-- Lists all your games that are compatible with Xbox Live Cloud.
-- Export your saved game files to a folder of your choice
+- Lists all your local games that are compatible with Xbox Live Cloud.
+- Export your local saved game files to a folder of your choice
 - Rename your files to their readable name
 
 ## Download
