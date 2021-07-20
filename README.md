@@ -15,9 +15,9 @@ Export your local save files from your Xbox Live or Game Pass games, then manual
 ## Download
 Only works on Windows 10 version 1507 (build 10240) or newer
 
-- [Download](https://github.com/Tom60chat/Xbox-Live-Save-Exporter/releases/tag/release) the zip file.
-- Open Game Pass Save Tranfer.exe
-- Done.
+| UWP (Easy) | WPF | 
+| ---------- | --- |
+| <a href='//www.microsoft.com/store/apps/9NK0HLN1PRWB?cid=storebadge&ocid=badge'><img src='https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png' alt='English badge' width="270" height="90"/></a> | <ul><li>[Download](https://github.com/Tom60chat/Xbox-Live-Save-Exporter/releases/tag/release) the zip file.</li><li>Open Game Pass Save Tranfer.exevalue 2</li><li>Done.</li></ul>|
 
 ## Screenshots
 <p align="center">
