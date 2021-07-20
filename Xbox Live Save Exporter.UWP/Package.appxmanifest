@@ -10,9 +10,9 @@
   <Identity
     Name="17470KatyCorp.XboxLiveSaveExporter"
     Publisher="CN=2D8DFBEE-3635-4E26-AC9F-FBBFB34DBB7B"
-    Version="1.0.0.0" />
+    Version="1.0.13.0" />
 
-  <mp:PhoneIdentity PhoneProductId="9df6ebe3-947e-4ccf-955b-c90ecf9324fb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="7bee2dce-2b73-427b-8a1d-c7982611c796" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Xbox Live Save Exporter</DisplayName>

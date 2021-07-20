@@ -75,13 +75,13 @@ namespace Xbox_Live_Save_Exporter
 
                 for (int y = 0; y < numFiles; y++)
                 {
-                    string fileName = BinaryReaderHelper.ReadUnicodeString(reader);
+                    string fileName = BinaryReaderHelper.ReadUnicodeString(reader, 0x40).TrimEnd('\0');
 
                     // Ignore all the white space of the block
-                    while (reader.ReadByte() == 0x0) { }
+                    //while (reader.ReadByte() == 0x0) { }
 
                     // Go back to a position after reading a non-empty byte
-                    reader.BaseStream.Position--;
+                    //reader.BaseStream.Position--;
 
                     // The guid folder that the files reside in
                     byte[] guid1 = reader.ReadBytes(4);
@@ -119,7 +119,7 @@ namespace Xbox_Live_Save_Exporter
             }
             catch
             {
-                return null;
+                return files;
             }
         }
         #endregion

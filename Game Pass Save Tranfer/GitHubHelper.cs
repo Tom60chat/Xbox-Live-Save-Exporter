@@ -18,6 +18,7 @@ public class GitHubHelper
     #region Variables
     private string RepositoryOwner;
     private string RepositoryName;
+    private string LastTag;
     #endregion
 
     #region Methods
@@ -47,6 +48,7 @@ public class GitHubHelper
         if (versionComparison < 0)
         {
             //The version on GitHub is more up to date than this local release.
+            LastTag = releases[0].TagName;
             return true;
         }
         else if (versionComparison > 0)
@@ -66,11 +68,10 @@ public class GitHubHelper
     /// </summary>
     public void Update()
     {
-        ProcessStartInfo psi = new ProcessStartInfo
-        {
-            FileName = $"https://github.com/{RepositoryOwner}/{RepositoryName}/releases",
-            UseShellExecute = true
-        };
+        ProcessStartInfo psi = new ProcessStartInfo {  UseShellExecute = true };
+        psi.FileName = string.IsNullOrEmpty(LastTag) ?
+            $"https://github.com/{RepositoryOwner}/{RepositoryName}/releases" :
+            $"https://github.com/{RepositoryOwner}/{RepositoryName}/releases/tag/{LastTag}";
         Process.Start(psi);
     }
     #endregion

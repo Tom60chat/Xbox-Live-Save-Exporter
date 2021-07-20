@@ -26,7 +26,7 @@
         </Grid.Resources>
 
         <StackPanel x:Name="pnlGame" Grid.Row="0" Orientation="Horizontal">
-            <Image x:Name="imgGameLogo" />
+            <Image x:Name="imgGameLogo"  MaxHeight="40" Margin="0,0,10,0"/>
             <TextBlock x:Name="txtGameTitle" Text="Game Name"/>
         </StackPanel>
         <TextBlock x:Name="txtStatut" Grid.Row="1" Text="..." Foreground="DimGray" />
