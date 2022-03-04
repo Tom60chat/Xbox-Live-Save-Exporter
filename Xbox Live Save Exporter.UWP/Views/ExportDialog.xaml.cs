@@ -24,7 +24,7 @@ namespace Xbox_Live_Save_Exporter.UWP
         /// <param name="game">The game to display</param>
         public void SetGame(Game game)
         {
-            imgGameLogo.Source = new BitmapImage(new Uri(game.Logo));
+            imgGameLogo.Source = game.LogoUWP;
             txtGameTitle.Text = game.DisplayName;
         }
 

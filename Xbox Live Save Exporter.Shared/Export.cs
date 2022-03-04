@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.Storage;
@@ -27,7 +25,6 @@ namespace Xbox_Live_Save_Exporter
             // DirectoryInfo is much faster than StorageFolder but https://docs.microsoft.com/en-us/archive/blogs/wsdevsol/skip-the-path-stick-to-the-storagefile
 
             double progres;
-            double progressLenght;
             StorageFolder wgs;
             IReadOnlyList<StorageFolder> folders;
             StorageFile file;
@@ -58,7 +55,7 @@ namespace Xbox_Live_Save_Exporter
                 double Xr = Xl * u;
                 progres = Xr;
 
-                if (OnProgress != null) OnProgress(this, progres);
+                OnProgress?.Invoke(this, progres);
 
                 var user = folders[u];
                 /*var file = new FileInfo(Path.Combine(user.FullName, "containers.index"));
@@ -87,7 +84,7 @@ namespace Xbox_Live_Save_Exporter
                     double Yr = Yl * f + Xr;
                     progres = Yr;
 
-                    if (OnProgress != null) OnProgress(this, progres);
+                    OnProgress?.Invoke(this, progres);
 
                     var containerFolder = container.Folders[f];
                     var containerFiles = await ContainerFile.TryParse(containerFolder);
@@ -103,14 +100,21 @@ namespace Xbox_Live_Save_Exporter
                         double Zr = Zl * f + Yr;
                         progres = Zr;
 
-                        if (OnProgress != null) OnProgress(this, progres);
+                        OnProgress?.Invoke(this, progres);
 
                         var containerFile = containerFiles[s];
-                        var sourceFile = await StorageFile.GetFileFromPathAsync(containerFile.Path);
+                        try
+                        {
+                            var sourceFile = await StorageFile.GetFileFromPathAsync(containerFile.Path);
 
-                        if (OnExport != null) OnExport(this, containerFile.Name);
+                            OnExport?.Invoke(this, containerFile.Name);
 
-                        await sourceFile.CopyAsync(tranferFolder, containerFile.Name, NameCollisionOption.GenerateUniqueName);
+                            await sourceFile.CopyAsync(tranferFolder, containerFile.Name, NameCollisionOption.GenerateUniqueName);
+                        }  
+                        catch  
+                        {
+                            continue;
+                        }  
                     }
                 }
             }

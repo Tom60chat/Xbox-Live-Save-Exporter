@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,6 +12,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Resources;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization;
 using Windows.Management.Deployment;
 using Windows.Services.Store;
 using Windows.UI.Popups;
@@ -36,6 +40,9 @@ namespace Xbox_Live_Save_Exporter.UWP
         {
             InitializeComponent();
             Suspending += OnSuspending;
+
+            AppCenter.Start("1c72429f-5884-4ad7-9f8d-b185dcf5eff1",
+                   typeof(Analytics), typeof(Crashes));
         }
 
         private async Task InitializeAsync()
@@ -77,12 +84,20 @@ namespace Xbox_Live_Save_Exporter.UWP
         /// <param name="e">Détails concernant la requête et le processus de lancement.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            // Set size
             var minSize = new Size(250, 200);
             var prefSize = new Size(400, 450);
 
             ApplicationView.GetForCurrentView().SetPreferredMinSize(minSize);
             ApplicationView.PreferredLaunchViewSize = prefSize;
+#if DEBUG
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+#endif
 
+#if DEBUG
+            // (Debug) Set language
+            ApplicationLanguages.PrimaryLanguageOverride = "fr";
+#endif
             _ = InitializeAsync();
 
             Frame rootFrame = Window.Current.Content as Frame;
