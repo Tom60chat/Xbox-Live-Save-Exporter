@@ -79,15 +79,24 @@ namespace Xbox_Live_Save_Exporter
                     reader.ReadBytes(8);
                 }
 
+                string folderName, secondName, UnknownValue, folderPath = null;
                 // Loop through every folder in the index, and print info about it
                 for (int i = 0; i < numFolders; i++)
                 {
-                    string folderName = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
+                    folderName = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
+                    secondName = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
 
-                    string secondName = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
+                    // Prefer the second name if it looks like a path (contains directory separator)
+                    // Otherwise use the first name, but only if the second is empty or identical
+                    if (!string.IsNullOrEmpty(secondName) && 
+                        (secondName.Contains(System.IO.Path.DirectorySeparatorChar) || 
+                         secondName.Contains(System.IO.Path.AltDirectorySeparatorChar)))
+                    {
+                        folderName = secondName;
+                    }
 
                     // Skip unknown value
-                    string UnknownValue = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
+                    UnknownValue = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
 
                     byte containerId = reader.ReadByte();
 
@@ -109,7 +118,7 @@ namespace Xbox_Live_Save_Exporter
                     // Skip unknown value
                     reader.ReadBytes(0x18);
 
-                    string folderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(file.Path), folderGuid.ToString("N").ToUpper());
+                    folderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(file.Path), folderGuid.ToString("N").ToUpper());
 
                     folders.Add(new ContainerFolder(folderName, containerId, folderGuid, folderPath));
                 }

@@ -46,11 +46,11 @@ namespace Xbox_Live_Save_Exporter
                 return false;
             }
 
-            StorageFolder tranferGame;
+            StorageFolder transferGame;
 
             try
             {
-                tranferGame = await folder.CreateFolderAsync(PathHelper.Sanitize(game.DisplayName, "Unknown game"), CreationCollisionOption.OpenIfExists);
+                transferGame = await folder.CreateFolderAsync(PathHelper.Sanitize(game.DisplayName, "Unknown game"), CreationCollisionOption.OpenIfExists);
             }
             catch
             {
@@ -84,11 +84,11 @@ namespace Xbox_Live_Save_Exporter
 
                 if (container == null) continue;
 
-                StorageFolder tranferUser;
+                StorageFolder transferUser;
 
                 try
                 {
-                    tranferUser = await tranferGame.CreateFolderAsync(PathHelper.Sanitize(user.Name, "user"), CreationCollisionOption.OpenIfExists);
+                    transferUser = await transferGame.CreateFolderAsync(PathHelper.Sanitize(user.Name, "user"), CreationCollisionOption.OpenIfExists);
                 }
                 catch
                 {
@@ -105,15 +105,28 @@ namespace Xbox_Live_Save_Exporter
                     OnProgress?.Invoke(this, progres);
 
                     var containerFolder = container.Folders[f];
-                    var containerFiles = await ContainerFile.TryParse(containerFolder);
+
+                    string containerFileName = null;
+                    if (containerFolder.Name.Contains(Path.DirectorySeparatorChar) || containerFolder.Name.Contains(Path.AltDirectorySeparatorChar))
+                    {
+                        containerFileName = Path.GetFileName(containerFolder.Name);
+                    }
+
+                    var containerFiles = await ContainerFile.TryParse(containerFolder, containerFileName);
 
                     if (containerFiles == null) continue;
 
-                    StorageFolder tranferFolder;
+                    StorageFolder transferFolder;
 
                     try
                     {
-                        tranferFolder = await tranferUser.CreateFolderAsync(PathHelper.Sanitize(containerFolder.Name, "save"), CreationCollisionOption.OpenIfExists);
+                        transferFolder = containerFileName != null ?
+                            // If the container folder has a path, create a nested folder with that name
+                            await ContainerHelper.CreateNestedFolderAsync(
+                                transferUser,
+                                containerFiles.Count == 1 ? containerFolder.Name[..^containerFileName.Length] : containerFolder.Name) :
+                            // Otherwise, create a folder with the sanitized name of the container folder
+                            await transferUser.CreateFolderAsync(PathHelper.Sanitize(containerFolder.Name, "save"), CreationCollisionOption.OpenIfExists);
                     }
                     catch
                     {
@@ -136,7 +149,7 @@ namespace Xbox_Live_Save_Exporter
 
                             OnExport?.Invoke(this, containerFile.Name);
 
-                            await sourceFile.CopyAsync(tranferFolder, PathHelper.Sanitize(containerFile.Name, "Data"), NameCollisionOption.GenerateUniqueName);
+                            await sourceFile.CopyAsync(transferFolder, PathHelper.Sanitize(containerFile.Name, "Data"), NameCollisionOption.GenerateUniqueName);
                         }  
                         catch  
                         {

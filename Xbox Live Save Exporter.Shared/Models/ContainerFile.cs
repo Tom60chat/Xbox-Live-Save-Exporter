@@ -35,12 +35,19 @@ namespace Xbox_Live_Save_Exporter
         /// </summary>
         /// <param name="folder">The folder container</param>
         /// <returns>The list of file</returns>
-        public static async Task<IList<ContainerFile>> TryParse(ContainerFolder folder)
+        public static async Task<IList<ContainerFile>> TryParse(ContainerFolder folder, string fileName = null)
         {
             try
             {
                 var container = await StorageFile.GetFileFromPathAsync(System.IO.Path.Combine(folder.Path, "container." + folder.Id));
-                return await TryParse(container);
+                var containerFiles = await TryParse(container);
+
+                // Sometimes the container file has a single file and the name is not stored in the container but in the folder name,
+                // so we can use it to rename the file
+                if (containerFiles.Count == 1 && !string.IsNullOrEmpty(fileName))
+                    containerFiles[0].Name = fileName;
+
+                return containerFiles;
             }
             catch
             {
