@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BinaryReaderHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PathHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Export.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Container.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\ContainerFile.cs" />

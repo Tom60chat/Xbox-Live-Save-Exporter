@@ -104,10 +104,16 @@ namespace Xbox_Live_Save_Exporter
                     byte[] guid10 = reader.ReadBytes(6);
 
                     Guid guid = new Guid(BitConverter.ToString(guid1).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid2).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid3).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid4).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid5).Replace("-", string.Empty));
-                    // The second guid is the same
-                    string subSecondGuid = BitConverter.ToString(guid6).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid7).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid8).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid9).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid10).Replace("-", string.Empty);
+                    // The two guids are only equal for a container that has never been
+                    // rewritten. The blob on disk is named after the second one, so use it
+                    // and fall back to the first only if that file is missing.
+                    Guid secondGuid = new Guid(BitConverter.ToString(guid6).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid7).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid8).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid9).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid10).Replace("-", string.Empty));
 
-                    string filePath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(file.Path), guid.ToString("N").ToUpper());
+                    string directory = System.IO.Path.GetDirectoryName(file.Path);
+                    string filePath = System.IO.Path.Combine(directory, secondGuid.ToString("N").ToUpper());
+
+                    if (!File.Exists(filePath))
+                        filePath = System.IO.Path.Combine(directory, guid.ToString("N").ToUpper());
 
                     files.Add(new ContainerFile(fileName, guid, filePath));
                 }
