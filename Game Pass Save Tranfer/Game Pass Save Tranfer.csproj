@@ -9,22 +9,38 @@
     <ApplicationIcon>Icon colored.ico</ApplicationIcon>
     <AssemblyName>Xbox Live Save Exporter</AssemblyName>
     <Authors>Tom Olivier</Authors>
-    <Company>KatyCorp</Company>
-    <PackageId>Xbox Live Save Export</PackageId>
+    <Company></Company>
+    <PackageId>tom60.xboxCloudSaveExporter</PackageId>
     <Product>Xbox Live Save Exporter</Product>
     <Description>Export your save files from your Xbox Live or Game Pass games, then manually upload them to Steam or another platform.
 </Description>
     <PackageProjectUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
-    <AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
-    <Version>1.1.2</Version>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0-alpha</FileVersion>
+    <Version>1.2.0-alpha</Version>
     <PackageReleaseNotes />
+    <Title>Xbox Live Save Exporter</Title>
+    <PackageIcon>Logo 2.3 colored.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\Logo Banner medium 2.png" />
     <None Remove="Logo Banner long 2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\Store\Logo\Logo 2.3 colored.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
