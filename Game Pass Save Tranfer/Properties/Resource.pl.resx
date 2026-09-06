@@ -121,7 +121,7 @@
     <value>O</value>
   </data>
   <data name="AboutDialog" xml:space="preserve">
-    <value>Wykonane przez Toma Olivera.
+    <value>Wykonane przez Tom Olivier.
 Ten program i jego autor nie są powiązani z firmą Microsoft i tymi podmiotami zależnymi.</value>
     <comment>About message to show inside the message box</comment>
   </data>

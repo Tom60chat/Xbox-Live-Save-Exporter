@@ -121,7 +121,7 @@
     <value>Cerca de</value>
   </data>
   <data name="AboutDialog" xml:space="preserve">
-    <value>Feito por Tom Oliver.
+    <value>Feito por Tom Olivier.
 Este programa e seu autor não são afiliados à Microsoft e a essas subsidiárias.</value>
     <comment>About message to show inside the message box</comment>
   </data>

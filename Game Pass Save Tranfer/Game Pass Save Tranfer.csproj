@@ -5,7 +5,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Xbox_Live_Save_Exporter</RootNamespace>
     <UseWPF>true</UseWPF>
-    <TargetPlatformVersion>10.0.10240</TargetPlatformVersion>
     <StartupObject />
     <ApplicationIcon>Icon colored.ico</ApplicationIcon>
     <AssemblyName>Xbox Live Save Exporter</AssemblyName>
@@ -33,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.19041.1" />
-    <PackageReference Include="Octokit" Version="0.50.0" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.8249" />
+    <PackageReference Include="Octokit" Version="14.0.0" />
   </ItemGroup>
 
   <ItemGroup>

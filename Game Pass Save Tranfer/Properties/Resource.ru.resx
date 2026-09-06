@@ -121,7 +121,7 @@
     <value>Обо</value>
   </data>
   <data name="AboutDialog" xml:space="preserve">
-    <value>Сделано Томом Оливером.
+    <value>Сделано Tom Olivier.
 Эта программа и ее автор не связаны с Microsoft и этими дочерними компаниями.</value>
     <comment>About message to show inside the message box</comment>
   </data>
