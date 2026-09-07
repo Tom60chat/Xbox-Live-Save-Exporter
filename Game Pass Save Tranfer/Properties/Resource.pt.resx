@@ -126,10 +126,10 @@ Este programa e seu autor não são afiliados à Microsoft e a essas subsidiári
     <comment>About message to show inside the message box</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Exporte seus arquivos salvos de seus jogos Xbox Live ou Game Pass para uma pasta e, em seguida, transfira-os manualmente para o Steam ou outra plataforma.</value>
+    <value>Exporte arquivos salvos locais de seus jogos Xbox compatíveis com a nuvem. Transfira-os manualmente para Steam ou outra plataforma.</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Perto</value>
+    <value>Fechar</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Exportar</value>
@@ -160,7 +160,7 @@ de salvamento</value>
     <value>Parâmetro</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Exportador de salvamento do Xbox Live</value>
+    <value>Exportador Salvamento Jogo Xbox</value>
   </data>
   <data name="UpdateAvailable" xml:space="preserve">
     <value>Atualização disponível</value>

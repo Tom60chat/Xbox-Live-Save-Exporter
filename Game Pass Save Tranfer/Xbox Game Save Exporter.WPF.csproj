@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -11,16 +11,15 @@
     <Authors>Tom Olivier</Authors>
     <Company></Company>
     <PackageId>tom60.xboxCloudSaveExporter</PackageId>
-    <Product>Xbox Live Save Exporter</Product>
-    <Description>Export your save files from your Xbox Live or Game Pass games, then manually upload them to Steam or another platform.
-</Description>
+    <Product>Xbox Game Save Exporter</Product>
+    <Description>Export save files from your Xbox games to a folder. Works with Game Pass and cloud-compatible games. Manually transfer your local saves to Steam or other platforms.</Description>
     <PackageProjectUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
     <AssemblyVersion>1.2.0.0</AssemblyVersion>
     <FileVersion>1.2.0-alpha</FileVersion>
     <Version>1.2.0-alpha</Version>
     <PackageReleaseNotes />
-    <Title>Xbox Live Save Exporter</Title>
+    <Title>Xbox Game Save Exporter</Title>
     <PackageIcon>Logo 2.3 colored.png</PackageIcon>
     <RepositoryUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</RepositoryUrl>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
@@ -67,33 +66,27 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\Resource.pl.resx">
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resource.de.resx">
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Resource.ru.resx">
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Resource.pt.resx">
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resource.es.resx">
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resource.fr.resx">
-      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.pl.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.pt.resx">
+      <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.ru.resx">
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
 

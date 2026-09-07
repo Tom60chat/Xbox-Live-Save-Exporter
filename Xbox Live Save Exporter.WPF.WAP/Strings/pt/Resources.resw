@@ -118,58 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>O aplikacji</value>
-  </data>
-  <data name="AboutDialog" xml:space="preserve">
-    <value>Wykonane przez Tom Olivier.
-Ten program i jego autor nie są powiązani z firmą Microsoft i tymi podmiotami zależnymi.</value>
-    <comment>About message to show inside the message box</comment>
+    <value>Cerca de</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Eksportuj lokalne pliki zapisu z gier Xbox kompatybilnych z chmurą. Przenieś je ręcznie do Steam lub innej platformy.</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Zamknij</value>
-  </data>
-  <data name="Export" xml:space="preserve">
-    <value>Eksport</value>
-  </data>
-  <data name="Exporting" xml:space="preserve">
-    <value>Eksportowanie</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>Nie</value>
-  </data>
-  <data name="NoSaveFound" xml:space="preserve">
-    <value>Nie znaleźliśmy żadnych zapisów gry</value>
-  </data>
-  <data name="PermissionDialog" xml:space="preserve">
-    <value>Ta aplikacja wymaga dostępu do systemu plików, aby móc eksportować zapisane gry.
-
-- Kliknij przycisk Parametr
-- Kliknij przycisk System plików
-- Uruchom ponownie aplikację.</value>
-    <comment>Message dialog box to ask user to enable file system authorization</comment>
-  </data>
-  <data name="SaveExporter" xml:space="preserve">
-    <value>Save
-Eksporter</value>
-    <comment>Title banner on the main view</comment>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Parametr</value>
+    <value>Exporte seus arquivos salvos de seus jogos Xbox Live ou Game Pass para uma pasta e, em seguida, transfira-os manualmente para o Steam ou outra plataforma.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Eksporter Zapisów Gry Xbox</value>
-  </data>
-  <data name="UpdateAvailable" xml:space="preserve">
-    <value>Dostępna aktualizacja</value>
-  </data>
-  <data name="UpdateAvailableDialog" xml:space="preserve">
-    <value>Dostępna jest nowa wersja.
-Czy chcesz otworzyć stronę pobierania?</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>Tak</value>
+    <value>Exportador de salvamento do Xbox Live</value>
   </data>
 </root>

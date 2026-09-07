@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About" xml:space="preserve">
-    <value>Обо</value>
+    <value>О приложении</value>
   </data>
   <data name="AboutDialog" xml:space="preserve">
     <value>Сделано Tom Olivier.
@@ -126,7 +126,7 @@
     <comment>About message to show inside the message box</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Экспортируйте файлы сохранения из игр Xbox Live или Game Pass в папку, а затем вручную перенесите их в Steam или другую платформу.</value>
+    <value>Экспортируйте локальные сохранения из облачных игр Xbox. Перенесите их вручную на Steam или другую платформу.</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Закрывать</value>
@@ -160,7 +160,7 @@
     <value>Настройки</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Экспортер сохранений Xbox Live</value>
+    <value>Экспортер сохранений игр Xbox</value>
   </data>
   <data name="UpdateAvailable" xml:space="preserve">
     <value>Обновление доступно</value>
@@ -170,6 +170,6 @@
 Вы хотите открыть страницу загрузки?</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>да</value>
+    <value>Да</value>
   </data>
 </root>

@@ -126,7 +126,7 @@ This program and its author are not affiliated with Microsoft and these subsidia
     <comment>About message to show inside the message box</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Export your save files from your Xbox Live or Game Pass games to a folder, then manually transfer them to Steam or another platform.</value>
+    <value>Export save files from your Xbox games to a folder. Works with Game Pass and cloud-compatible games. Manually transfer your local saves to Steam or other platforms.</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
@@ -160,7 +160,7 @@ Exporter</value>
     <value>Settings</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Xbox Live Save Exporter</value>
+    <value>Xbox Game Save Exporter</value>
   </data>
   <data name="UpdateAvailable" xml:space="preserve">
     <value>Update available</value>
