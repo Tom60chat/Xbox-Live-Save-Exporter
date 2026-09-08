@@ -11,7 +11,7 @@
   <Identity
     Name="17470KatyCorp.XboxLiveSaveExporter"
     Publisher="CN=2D8DFBEE-3635-4E26-AC9F-FBBFB34DBB7B"
-    Version="1.2.0.1" />
+    Version="1.2.0.2" />
 
   <mp:PhoneIdentity PhoneProductId="7bee2dce-2b73-427b-8a1d-c7982611c796" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
