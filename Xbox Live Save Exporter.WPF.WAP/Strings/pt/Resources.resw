@@ -121,9 +121,9 @@
     <value>Cerca de</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Exporte seus arquivos salvos de seus jogos Xbox Live ou Game Pass para uma pasta e, em seguida, transfira-os manualmente para o Steam ou outra plataforma.</value>
+    <value>Exporte arquivos salvos locais de seus jogos Xbox compatíveis com a nuvem. Transfira-os manualmente para Steam ou outra plataforma.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Exportador de salvamento do Xbox Live</value>
+    <value>Exportador Salvamento Jogo Xbox</value>
   </data>
 </root>

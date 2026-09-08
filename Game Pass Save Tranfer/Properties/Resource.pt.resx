@@ -172,4 +172,7 @@ Você quer abrir a página de download?</value>
   <data name="Yes" xml:space="preserve">
     <value>Sim</value>
   </data>
+  <data name="SmartExport" xml:space="preserve">
+    <value>Exportação inteligente</value>
+  </data>
 </root>

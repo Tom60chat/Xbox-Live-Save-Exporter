@@ -3,6 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>8.0</LangVersion>
     <RootNamespace>Xbox_Live_Save_Exporter</RootNamespace>
     <UseWPF>true</UseWPF>
     <StartupObject />

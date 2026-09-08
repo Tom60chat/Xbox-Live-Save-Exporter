@@ -1,4 +1,4 @@
-﻿using mveril.WinRT.InitializeWithWindow.WPF;
+using mveril.WinRT.InitializeWithWindow.WPF;
 using System;
 using System.Collections.ObjectModel;
 using System.Reflection;
@@ -43,10 +43,20 @@ namespace Xbox_Live_Save_Exporter
 
         private void lstGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnExport.IsEnabled = lstGames.SelectedItems.Count > 0;
+            btnExport.IsEnabled = btnSmartExport.IsEnabled = lstGames.SelectedItems.Count > 0;
         }
 
         private async void btnExport_Click(object sender, RoutedEventArgs e)
+        {
+            await DoExport(false);
+        }
+
+        private async void btnSmartExport_Click(object sender, RoutedEventArgs e)
+        {
+            await DoExport(true);
+        }
+
+        private async Task DoExport(bool smartNaming)
         {
             var folderPicker = new FolderPicker
             {
@@ -88,7 +98,7 @@ namespace Xbox_Live_Save_Exporter
                         };
                         export.OnExport += (sender, statut) => exportWindow.SetStatut(Properties.Resource.Exporting + " " + statut);
 
-                        await export.Start(game, folder);
+                        await export.Start(game, folder, smartNaming);
                     }
                 }
 

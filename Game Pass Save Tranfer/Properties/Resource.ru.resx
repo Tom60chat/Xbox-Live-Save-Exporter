@@ -172,4 +172,7 @@
   <data name="Yes" xml:space="preserve">
     <value>Да</value>
   </data>
+  <data name="SmartExport" xml:space="preserve">
+    <value>Умный экспорт</value>
+  </data>
 </root>

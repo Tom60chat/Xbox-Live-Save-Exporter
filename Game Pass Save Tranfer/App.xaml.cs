@@ -17,7 +17,8 @@ namespace Xbox_Live_Save_Exporter
 
         public App()
         {
-            IsWAP = Package.Current != null;
+            try { IsWAP = Package.Current != null; }
+            catch (InvalidOperationException) { IsWAP = false; }
 
             if (IsWAP)
                 InitStoreVersion();
@@ -55,7 +56,7 @@ namespace Xbox_Live_Save_Exporter
             {
                 var availabilityResult = await Package.Current.CheckUpdateAvailabilityAsync();
 
-                if (availabilityResult.Availability == PackageUpdateAvailability.Available || availabilityResult.Availability == PackageUpdateAvailability.Required || true)
+                if (availabilityResult.Availability == PackageUpdateAvailability.Available || availabilityResult.Availability == PackageUpdateAvailability.Required)
                 {
                     var answer = MessageBox.Show(
                         Xbox_Live_Save_Exporter.Properties.Resource.UpdateAvailableDialog,

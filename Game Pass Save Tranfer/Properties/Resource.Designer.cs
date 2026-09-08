@@ -80,7 +80,7 @@ namespace Xbox_Live_Save_Exporter.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Export your save files from your Xbox Live or Game Pass games to a folder, then manually transfer them to Steam or another platform..
+        ///   Recherche une chaîne localisée semblable à Export save files from your Xbox games to a folder. Works with Game Pass and cloud-compatible games. Manually transfer your local saves to Steam or other platforms..
         /// </summary>
         public static string AppDescription {
             get {
@@ -166,7 +166,16 @@ namespace Xbox_Live_Save_Exporter.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Xbox Live Save Exporter.
+        ///   Recherche une chaîne localisée semblable à Smart export.
+        /// </summary>
+        public static string SmartExport {
+            get {
+                return ResourceManager.GetString("SmartExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Xbox Game Save Exporter.
         /// </summary>
         public static string Title {
             get {

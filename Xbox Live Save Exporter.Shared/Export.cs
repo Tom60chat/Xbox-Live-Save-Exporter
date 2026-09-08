@@ -19,8 +19,9 @@ namespace Xbox_Live_Save_Exporter
         /// <summary> Export a game save file to the desired folder </summary>
         /// <param name="game">The game to export</param>
         /// <param name="folder">The destination folder</param>
+        /// <param name="smartNaming">Whether to use smart naming for the folders</param>
         /// <returns>true the task is successful, else false</returns>
-        public async Task<bool> Start(Game game, StorageFolder folder)
+        public async Task<bool> Start(Game game, StorageFolder folder, bool smartNaming = true)
         {
             // DirectoryInfo is much faster than StorageFolder but https://docs.microsoft.com/en-us/archive/blogs/wsdevsol/skip-the-path-stick-to-the-storagefile
 
@@ -80,7 +81,7 @@ namespace Xbox_Live_Save_Exporter
                     continue;
                 }
 
-                var container = await Container.TryParse(file);
+                var container = await Container.TryParse(file, smartNaming);
 
                 if (container == null) continue;
 
@@ -107,7 +108,8 @@ namespace Xbox_Live_Save_Exporter
                     var containerFolder = container.Folders[f];
 
                     string containerFileName = null;
-                    if (containerFolder.Name.Contains(Path.DirectorySeparatorChar) || containerFolder.Name.Contains(Path.AltDirectorySeparatorChar))
+                    if (smartNaming && (containerFolder.Name.Contains(Path.DirectorySeparatorChar.ToString()) ||
+                                        containerFolder.Name.Contains(Path.AltDirectorySeparatorChar.ToString())))
                     {
                         containerFileName = Path.GetFileName(containerFolder.Name);
                     }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -166,10 +166,13 @@ de respaldo</value>
     <value>Actualización disponible</value>
   </data>
   <data name="UpdateAvailableDialog" xml:space="preserve">
-    <value>Una nueva version esta disponible.
+    <value>Una nueva versión está disponible.
 ¿Quieres abrir la página de descarga?</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Sí</value>
+  </data>
+  <data name="SmartExport" xml:space="preserve">
+    <value>Exportación inteligente</value>
   </data>
 </root>

@@ -121,9 +121,9 @@
     <value>À propos</value>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Export vos fichiers de sauvegarde de vos jeux Xbox Live ou Game Pass vers un dossier, puis transférez-les manuellement vers Steam ou une autre plate-forme.</value>
+    <value>Exportez les sauvegardes locales de vos jeux Xbox compatibles cloud. Transférez-les manuellement vers Steam ou une autre plateforme.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Exportateur de sauvegardes Xbox Live</value>
+    <value>Exportateur Sauvegarde Jeu Xbox</value>
   </data>
 </root>

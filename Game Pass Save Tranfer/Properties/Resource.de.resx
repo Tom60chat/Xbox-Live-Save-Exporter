@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -171,5 +171,8 @@ Möchten Sie die Download-Seite öffnen?</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
+  </data>
+  <data name="SmartExport" xml:space="preserve">
+    <value>Intelligenter Export</value>
   </data>
 </root>
