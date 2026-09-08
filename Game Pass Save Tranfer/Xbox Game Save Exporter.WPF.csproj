@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -9,7 +9,7 @@
     <StartupObject />
     <ApplicationIcon>Icon colored.ico</ApplicationIcon>
     <AssemblyName>Xbox Live Save Exporter</AssemblyName>
-    <Authors>Tom Olivier</Authors>
+    <Authors>Tom60 &lt;contact.tom60@proton.me&gt;</Authors>
     <Company></Company>
     <PackageId>tom60.xboxCloudSaveExporter</PackageId>
     <Product>Xbox Game Save Exporter</Product>

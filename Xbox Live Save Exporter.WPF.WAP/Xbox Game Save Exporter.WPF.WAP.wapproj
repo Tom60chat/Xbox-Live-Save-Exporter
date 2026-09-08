@@ -54,40 +54,57 @@
     <TargetPlatformVersion>10.0.26100.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
     <DefaultLanguage>fr-FR</DefaultLanguage>
-    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
     <GenerateTemporaryStoreCertificate>True</GenerateTemporaryStoreCertificate>
     <EntryPointProjectUniqueName>..\Game Pass Save Tranfer\Xbox Game Save Exporter.WPF.csproj</EntryPointProjectUniqueName>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+    <GenerateTestArtifacts>False</GenerateTestArtifacts>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <PackageCertificateThumbprint>2C5557D3529BE3735BCB7222D36C98F713765A50</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <DefaultLanguage>en</DefaultLanguage>
+    <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -126,7 +143,7 @@
     <Content Include="Images\Square44x44Logo.targetsize-256.png" />
     <Content Include="Images\Square44x44Logo.targetsize-32.png" />
     <Content Include="Images\Square44x44Logo.targetsize-48.png" />
-    <Content Include="Images\StoreLogo.scale-100.png" />
+    <Content Include="Images\StoreLogo.png" />
     <Content Include="Images\StoreLogo.scale-125.png" />
     <Content Include="Images\StoreLogo.scale-150.png" />
     <Content Include="Images\Wide310x150Logo.scale-100.png" />
@@ -139,6 +156,7 @@
     <Content Include="Images\Square44x44Logo.targetsize-256_altform-unplated.png" />
     <Content Include="Images\Square44x44Logo.targetsize-32_altform-unplated.png" />
     <Content Include="Images\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="wappublish-fix.bat" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>
   <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />

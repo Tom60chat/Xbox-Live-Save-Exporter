@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>Cerca de</value>
-  </data>
   <data name="AppDescription" xml:space="preserve">
     <value>Exporte arquivos salvos locais de seus jogos Xbox compatíveis com a nuvem. Transfira-os manualmente para Steam ou outra plataforma.</value>
   </data>
