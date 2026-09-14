@@ -173,6 +173,6 @@
     <PRIResource Include="Strings\fr\Resources.resw" />
     <PRIResource Include="Strings\pl\Resources.resw" />
     <PRIResource Include="Strings\pt\Resources.resw" />
-    <PRIResource Include="Strings\ru\Resources.resw" />
+
   </ItemGroup>
 </Project>

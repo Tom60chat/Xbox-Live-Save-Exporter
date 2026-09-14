@@ -1,18 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
     <LangVersion>8.0</LangVersion>
     <RootNamespace>Xbox_Live_Save_Exporter</RootNamespace>
     <UseWPF>true</UseWPF>
     <StartupObject />
     <ApplicationIcon>Icon colored.ico</ApplicationIcon>
-    <AssemblyName>Xbox Live Save Exporter</AssemblyName>
+    <AssemblyName>Game Save Exporter for Xbox</AssemblyName>
     <Authors>Tom60 &lt;contact.tom60@proton.me&gt;</Authors>
     <Company></Company>
     <PackageId>tom60.xboxCloudSaveExporter</PackageId>
-    <Product>Xbox Game Save Exporter</Product>
+    <Product>Game Save Exporter for Xbox</Product>
     <Description>Export save files from your Xbox games to a folder. Works with Game Pass and cloud-compatible games. Manually transfer your local saves to Steam or other platforms.</Description>
     <PackageProjectUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
@@ -20,7 +21,7 @@
     <FileVersion>1.2.0.2</FileVersion>
     <Version>1.2.0.2</Version>
     <PackageReleaseNotes />
-    <Title>Xbox Game Save Exporter</Title>
+    <Title>Game Save Exporter for Xbox</Title>
     <PackageIcon>Logo 2.3 colored.png</PackageIcon>
     <RepositoryUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</RepositoryUrl>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
@@ -86,9 +87,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Properties\Resource.ru.resx">
-      <Generator></Generator>
-    </EmbeddedResource>
+
   </ItemGroup>
 
   <Import Project="..\Xbox Live Save Exporter.Shared\Xbox Live Save Exporter.Shared.projitems" Label="Shared" />

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -121,6 +121,6 @@
     <value>Exportez les sauvegardes locales de vos jeux Xbox compatibles cloud. Transférez-les manuellement vers Steam ou une autre plateforme.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Exportateur Sauvegarde Jeu Xbox</value>
+    <value>Exportateur Sauvegarde pour Jeu Xbox</value>
   </data>
 </root>

@@ -70,7 +70,7 @@ namespace Xbox_Live_Save_Exporter.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Made by Tom Olivier.
+        ///   Recherche une chaîne localisée semblable à Made by Tom60.
         ///This program and its author are not affiliated with Microsoft and these subsidiaries..
         /// </summary>
         public static string AboutDialog {
