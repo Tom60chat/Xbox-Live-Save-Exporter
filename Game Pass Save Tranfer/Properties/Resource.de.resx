@@ -121,21 +121,21 @@
     <value>Über</value>
   </data>
   <data name="AboutDialog" xml:space="preserve">
-    <value>Gemacht von Tom Oliver.
+    <value>Gemacht von Tom60.
 Dieses Programm und sein Autor sind nicht mit Microsoft und diesen Tochtergesellschaften verbunden.</value>
     <comment>About message to show inside the message box</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Exportieren Sie Ihre Speicherdateien aus Ihren Xbox Live- oder Game Pass-Spielen in einen Ordner und übertragen Sie sie dann manuell auf Steam oder eine andere Plattform.</value>
+    <value>Exportieren Sie lokale Speicherdateien Ihrer Cloud-kompatiblen Xbox-Spiele. Übertragen Sie sie manuell auf Steam oder eine andere Plattform.</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>Schließen</value>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>Export</value>
+    <value>Exportieren</value>
   </data>
   <data name="Exporting" xml:space="preserve">
-    <value>Exportieren</value>
+    <value>Exportiere</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Nein</value>
@@ -160,7 +160,7 @@ speichern</value>
     <value>Einstellungen</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Exporter für Xbox Live-Speicherstände</value>
+    <value>Spielsicherung Exporter für Xbox</value>
   </data>
   <data name="UpdateAvailable" xml:space="preserve">
     <value>Update verfügbar</value>
@@ -171,5 +171,8 @@ Möchten Sie die Download-Seite öffnen?</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
+  </data>
+  <data name="SmartExport" xml:space="preserve">
+    <value>Intelligenter Export</value>
   </data>
 </root>

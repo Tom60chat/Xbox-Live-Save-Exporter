@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,59 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About" xml:space="preserve">
-    <value>Обо</value>
-  </data>
-  <data name="AboutDialog" xml:space="preserve">
-    <value>Сделано Томом Оливером.
-Эта программа и ее автор не связаны с Microsoft и этими дочерними компаниями.</value>
-    <comment>About message to show inside the message box</comment>
-  </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Экспортируйте файлы сохранения из игр Xbox Live или Game Pass в папку, а затем вручную перенесите их в Steam или другую платформу.</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Закрывать</value>
-  </data>
-  <data name="Export" xml:space="preserve">
-    <value>Экспорт</value>
-  </data>
-  <data name="Exporting" xml:space="preserve">
-    <value>Экспорт</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>Нет</value>
-  </data>
-  <data name="NoSaveFound" xml:space="preserve">
-    <value>Мы не нашли сохраненных игр</value>
-  </data>
-  <data name="PermissionDialog" xml:space="preserve">
-    <value>Этому приложению необходим доступ к файловой системе, чтобы иметь возможность экспортировать сохраненные игры.
-
-- Нажмите кнопку "Настройки".
-- Нажмите кнопку "Файловая система".
-- Перезапустите приложение.</value>
-    <comment>Message dialog box to ask user to enable file system authorization</comment>
-  </data>
-  <data name="SaveExporter" xml:space="preserve">
-    <value>Сохранить
-Экспортер</value>
-    <comment>Title banner on the main view</comment>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Exporte arquivos salvos locais de seus jogos Xbox compatíveis com a nuvem. Transfira-os manualmente para Steam ou outra plataforma.</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Экспортер сохранений Xbox Live</value>
-  </data>
-  <data name="UpdateAvailable" xml:space="preserve">
-    <value>Обновление доступно</value>
-  </data>
-  <data name="UpdateAvailableDialog" xml:space="preserve">
-    <value>Доступна новая версия.
-Вы хотите открыть страницу загрузки?</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>да</value>
+    <value>Exportador Salvamento Jogo para Xbox</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-﻿<Window x:Class="Xbox_Live_Save_Exporter.MainWindow"
+<Window x:Class="Xbox_Live_Save_Exporter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         xmlns:p = "clr-namespace:Xbox_Live_Save_Exporter.Properties"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="{x:Static p:Resource.Title}" Height="450" Width="400" MinHeight="200" MinWidth="250" WindowStartupLocation="CenterScreen">
+        Title="{x:Static p:Resource.Title}" Height="450" Width="400" MinHeight="200" MinWidth="350" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,7 +16,6 @@
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
         
-        <!-- <Image Source="/Assets/Logo Banner long 2.png" MaxHeight="70" HorizontalAlignment="Left" /> -->
         <Viewbox MaxHeight="70" HorizontalAlignment="Left">
             <Grid Height="70">
                 <Grid.ColumnDefinitions>
@@ -26,13 +25,11 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="/Assets/Logo Banner medium 2.png"/>
-                <!-- <TextBlock Grid.Column="1" TextAlignment="Right" FontSize="27" FontFamily="Arial" VerticalAlignment="Center"><Run Text="Save"/><LineBreak/><Run Text="Exporter"/></TextBlock> -->
                 <TextBlock Grid.Column="1" TextAlignment="Right" FontSize="27" FontFamily="Arial" VerticalAlignment="Center" Text="{x:Static p:Resource.SaveExporter}" />
             </Grid>
         </Viewbox>
-        
+
         <ListView x:Name="lstGames" Grid.Row="1" ItemsSource="{Binding gameCollection}" SelectionChanged="lstGames_SelectionChanged">
-            <!--ItemsSource="{Binding gameCollection}"-->
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -51,25 +48,27 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
 
-            <!--<local:Game DisplayName="test" Logo="C:\Program Files\WindowsApps\CompulsionGamesInc.WeHappyFew_1.8.8987.2_x64__eae46zy90r9xg\Resources\StoreLogo.png"/>-->
         </ListView>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.Resources>
                 <Style TargetType="{x:Type Button}">
-                    <Setter Property="Width" Value="80" />
-                    <Setter Property="Margin" Value="10, 5" />
+                    <Setter Property="MinWidth" Value="80" />
+                    <Setter Property="Padding" Value="10,0" />
+                    <Setter Property="Margin" Value="10,5" />
                 </Style>                
             </Grid.Resources>
 
-            <Button x:Name="btnExport" Content="{x:Static p:Resource.Export}" IsEnabled="False" Click="btnExport_Click" />
-            <Button x:Name="btnAbout" Content="{x:Static p:Resource.About}" Grid.Column="1" Click="btnAbout_Click"/>
+            <Button x:Name="btnExport" Content="{x:Static p:Resource.Export}" IsEnabled="False" Click="btnExport_Click" Grid.Column="0" />
+            <Button x:Name="btnSmartExport" Content="{x:Static p:Resource.SmartExport}" IsEnabled="False" Click="btnSmartExport_Click" Grid.Column="1" />
+            <Button x:Name="btnAbout" Content="{x:Static p:Resource.About}" Grid.Column="2" Click="btnAbout_Click" HorizontalAlignment="Center" />
         </Grid>
 
         <TextBlock x:Name="txtNoSaveFound" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Text="{x:Static p:Resource.NoSaveFound}" />
-        <TextBlock x:Name="progressRing" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Text="..."/>
+        <ProgressBar x:Name="progressRing" Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" IsIndeterminate="True" Width="150" Height="20" />
     </Grid>
 </Window>

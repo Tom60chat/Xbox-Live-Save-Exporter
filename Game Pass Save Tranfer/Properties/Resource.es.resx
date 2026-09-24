@@ -121,15 +121,15 @@
     <value>Acerca de</value>
   </data>
   <data name="AboutDialog" xml:space="preserve">
-    <value>Hecho por Tom Oliver.
+    <value>Hecho por Tom Olivier.
 Este programa y su autor no están afiliados a Microsoft ni a estas subsidiarias.</value>
     <comment>About message to show inside the message box</comment>
   </data>
   <data name="AppDescription" xml:space="preserve">
-    <value>Exporta tus archivos guardados de tus juegos de Xbox Live o Game Pass a una carpeta, luego transfiérelos manualmente a Steam u otra plataforma.</value>
+    <value>Exporta los archivos guardados locales de tus juegos Xbox compatibles con la nube. Transfiérelos manualmente a Steam u otra plataforma.</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Close</value>
+    <value>Cerrar</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Exportar</value>
@@ -160,16 +160,19 @@ de respaldo</value>
     <value>Parámetros</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Xbox Live exportador de respaldo</value>
+    <value>Exportador Guardado Juego para Xbox</value>
   </data>
   <data name="UpdateAvailable" xml:space="preserve">
     <value>Actualización disponible</value>
   </data>
   <data name="UpdateAvailableDialog" xml:space="preserve">
-    <value>Una nueva version esta disponible.
+    <value>Una nueva versión está disponible.
 ¿Quieres abrir la página de descarga?</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Sí</value>
+  </data>
+  <data name="SmartExport" xml:space="preserve">
+    <value>Exportación inteligente</value>
   </data>
 </root>

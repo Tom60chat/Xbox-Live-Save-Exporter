@@ -35,12 +35,19 @@ namespace Xbox_Live_Save_Exporter
         /// </summary>
         /// <param name="folder">The folder container</param>
         /// <returns>The list of file</returns>
-        public static async Task<IList<ContainerFile>> TryParse(ContainerFolder folder)
+        public static async Task<IList<ContainerFile>> TryParse(ContainerFolder folder, string fileName = null)
         {
             try
             {
                 var container = await StorageFile.GetFileFromPathAsync(System.IO.Path.Combine(folder.Path, "container." + folder.Id));
-                return await TryParse(container);
+                var containerFiles = await TryParse(container);
+
+                // Sometimes the container file has a single file and the name is not stored in the container but in the folder name,
+                // so we can use it to rename the file
+                if (containerFiles.Count == 1 && !string.IsNullOrEmpty(fileName))
+                    containerFiles[0].Name = fileName;
+
+                return containerFiles;
             }
             catch
             {
@@ -104,10 +111,16 @@ namespace Xbox_Live_Save_Exporter
                     byte[] guid10 = reader.ReadBytes(6);
 
                     Guid guid = new Guid(BitConverter.ToString(guid1).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid2).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid3).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid4).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid5).Replace("-", string.Empty));
-                    // The second guid is the same
-                    string subSecondGuid = BitConverter.ToString(guid6).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid7).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid8).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid9).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid10).Replace("-", string.Empty);
+                    // The two guids are only equal for a container that has never been
+                    // rewritten. The blob on disk is named after the second one, so use it
+                    // and fall back to the first only if that file is missing.
+                    Guid secondGuid = new Guid(BitConverter.ToString(guid6).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid7).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid8).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid9).Replace("-", string.Empty) + "-" + BitConverter.ToString(guid10).Replace("-", string.Empty));
 
-                    string filePath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(file.Path), guid.ToString("N").ToUpper());
+                    string directory = System.IO.Path.GetDirectoryName(file.Path);
+                    string filePath = System.IO.Path.Combine(directory, secondGuid.ToString("N").ToUpper());
+
+                    if (!File.Exists(filePath))
+                        filePath = System.IO.Path.Combine(directory, guid.ToString("N").ToUpper());
 
                     files.Add(new ContainerFile(fileName, guid, filePath));
                 }

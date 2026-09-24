@@ -1,6 +1,8 @@
-﻿using mveril.WinRT.InitializeWithWindow.WPF;
+using mveril.WinRT.InitializeWithWindow.WPF;
 using System;
 using System.Collections.ObjectModel;
+using System.Reflection;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -41,10 +43,20 @@ namespace Xbox_Live_Save_Exporter
 
         private void lstGames_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnExport.IsEnabled = lstGames.SelectedItems.Count > 0;
+            btnExport.IsEnabled = btnSmartExport.IsEnabled = lstGames.SelectedItems.Count > 0;
         }
 
         private async void btnExport_Click(object sender, RoutedEventArgs e)
+        {
+            await DoExport(false);
+        }
+
+        private async void btnSmartExport_Click(object sender, RoutedEventArgs e)
+        {
+            await DoExport(true);
+        }
+
+        private async Task DoExport(bool smartNaming)
         {
             var folderPicker = new FolderPicker
             {
@@ -86,7 +98,7 @@ namespace Xbox_Live_Save_Exporter
                         };
                         export.OnExport += (sender, statut) => exportWindow.SetStatut(Properties.Resource.Exporting + " " + statut);
 
-                        await export.Start(game, folder);
+                        await export.Start(game, folder, smartNaming);
                     }
                 }
 
@@ -99,7 +111,18 @@ namespace Xbox_Live_Save_Exporter
 
         private void btnAbout_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Properties.Resource.AboutDialog, Properties.Resource.About);
+            var aboutMessage = new StringBuilder();
+
+            aboutMessage.AppendLine(Assembly.GetExecutingAssembly().GetName().Version.ToString());
+            aboutMessage.AppendLine();
+            aboutMessage.AppendLine(Properties.Resource.AboutDialog);
+            aboutMessage.AppendLine();
+            aboutMessage.AppendLine("https://github.com/Tom60chat/Xbox-Live-Save-Exporter");
+            aboutMessage.AppendLine();
+            aboutMessage.AppendLine("Copyright © 2021-2026 Tom60 <contact.tom60@proton.me>");
+            aboutMessage.AppendLine("ISC License");
+
+            MessageBox.Show(aboutMessage.ToString(), Properties.Resource.About);
         }
         #endregion
     }

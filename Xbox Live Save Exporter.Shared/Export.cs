@@ -19,8 +19,9 @@ namespace Xbox_Live_Save_Exporter
         /// <summary> Export a game save file to the desired folder </summary>
         /// <param name="game">The game to export</param>
         /// <param name="folder">The destination folder</param>
+        /// <param name="smartNaming">Whether to use smart naming for the folders</param>
         /// <returns>true the task is successful, else false</returns>
-        public async Task<bool> Start(Game game, StorageFolder folder)
+        public async Task<bool> Start(Game game, StorageFolder folder, bool smartNaming = true)
         {
             // DirectoryInfo is much faster than StorageFolder but https://docs.microsoft.com/en-us/archive/blogs/wsdevsol/skip-the-path-stick-to-the-storagefile
 
@@ -46,7 +47,16 @@ namespace Xbox_Live_Save_Exporter
                 return false;
             }
 
-            var tranferGame = await folder.CreateFolderAsync(game.DisplayName, CreationCollisionOption.OpenIfExists);
+            StorageFolder transferGame;
+
+            try
+            {
+                transferGame = await folder.CreateFolderAsync(PathHelper.Sanitize(game.DisplayName, "Unknown game"), CreationCollisionOption.OpenIfExists);
+            }
+            catch
+            {
+                return false;
+            }
 
             // Loop through every user folder
             for (int u = 0; u < folders.Count; u++)
@@ -71,11 +81,20 @@ namespace Xbox_Live_Save_Exporter
                     continue;
                 }
 
-                var container = await Container.TryParse(file);
+                var container = await Container.TryParse(file, smartNaming);
 
                 if (container == null) continue;
 
-                var tranferUser = await tranferGame.CreateFolderAsync(user.Name, CreationCollisionOption.OpenIfExists);
+                StorageFolder transferUser;
+
+                try
+                {
+                    transferUser = await transferGame.CreateFolderAsync(PathHelper.Sanitize(user.Name, "user"), CreationCollisionOption.OpenIfExists);
+                }
+                catch
+                {
+                    continue;
+                }
 
                 // Loop through every save folder
                 for (int f = 0; f < container.Folders.Count; f++)
@@ -87,17 +106,40 @@ namespace Xbox_Live_Save_Exporter
                     OnProgress?.Invoke(this, progres);
 
                     var containerFolder = container.Folders[f];
-                    var containerFiles = await ContainerFile.TryParse(containerFolder);
+
+                    string containerFileName = null;
+                    if (smartNaming && (containerFolder.Name.Contains(Path.DirectorySeparatorChar.ToString()) ||
+                                        containerFolder.Name.Contains(Path.AltDirectorySeparatorChar.ToString())))
+                    {
+                        containerFileName = Path.GetFileName(containerFolder.Name);
+                    }
+
+                    var containerFiles = await ContainerFile.TryParse(containerFolder, containerFileName);
 
                     if (containerFiles == null) continue;
 
-                    var tranferFolder = await tranferUser.CreateFolderAsync(containerFolder.Name, CreationCollisionOption.OpenIfExists);
+                    StorageFolder transferFolder;
+
+                    try
+                    {
+                        transferFolder = containerFileName != null ?
+                            // If the container folder has a path, create a nested folder with that name
+                            await ContainerHelper.CreateNestedFolderAsync(
+                                transferUser,
+                                containerFiles.Count == 1 ? containerFolder.Name[..^containerFileName.Length] : containerFolder.Name) :
+                            // Otherwise, create a folder with the sanitized name of the container folder
+                            await transferUser.CreateFolderAsync(PathHelper.Sanitize(containerFolder.Name, "save"), CreationCollisionOption.OpenIfExists);
+                    }
+                    catch
+                    {
+                        continue;
+                    }
 
                     // Loop through every save file
                     for (int s = 0; s < containerFiles.Count; s++)
                     {
                         double Zl = (double)Yl / containerFiles.Count;
-                        double Zr = Zl * f + Yr;
+                        double Zr = Zl * s + Yr;
                         progres = Zr;
 
                         OnProgress?.Invoke(this, progres);
@@ -109,7 +151,7 @@ namespace Xbox_Live_Save_Exporter
 
                             OnExport?.Invoke(this, containerFile.Name);
 
-                            await sourceFile.CopyAsync(tranferFolder, containerFile.Name, NameCollisionOption.GenerateUniqueName);
+                            await sourceFile.CopyAsync(transferFolder, PathHelper.Sanitize(containerFile.Name, "Data"), NameCollisionOption.GenerateUniqueName);
                         }  
                         catch  
                         {

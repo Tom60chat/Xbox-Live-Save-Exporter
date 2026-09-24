@@ -19,7 +19,7 @@ namespace Xbox_Live_Save_Exporter.Properties {
     // à l'aide d'un outil, tel que ResGen ou Visual Studio.
     // Pour ajouter ou supprimer un membre, modifiez votre fichier .ResX, puis réexécutez ResGen
     // avec l'option /str ou régénérez votre projet VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resource {
@@ -70,7 +70,7 @@ namespace Xbox_Live_Save_Exporter.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Made by Tom Oliver.
+        ///   Recherche une chaîne localisée semblable à Made by Tom60.
         ///This program and its author are not affiliated with Microsoft and these subsidiaries..
         /// </summary>
         public static string AboutDialog {
@@ -80,7 +80,7 @@ namespace Xbox_Live_Save_Exporter.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Export your save files from your Xbox Live or Game Pass games to a folder, then manually transfer them to Steam or another platform..
+        ///   Recherche une chaîne localisée semblable à Export save files from your Xbox games to a folder. Works with Game Pass and cloud-compatible games. Manually transfer your local saves to Steam or other platforms..
         /// </summary>
         public static string AppDescription {
             get {
@@ -166,7 +166,16 @@ namespace Xbox_Live_Save_Exporter.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Xbox Live Save Exporter.
+        ///   Recherche une chaîne localisée semblable à Smart export.
+        /// </summary>
+        public static string SmartExport {
+            get {
+                return ResourceManager.GetString("SmartExport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Xbox Game Save Exporter.
         /// </summary>
         public static string Title {
             get {

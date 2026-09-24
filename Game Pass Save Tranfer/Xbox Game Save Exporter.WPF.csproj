@@ -1,0 +1,95 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+    <LangVersion>8.0</LangVersion>
+    <RootNamespace>Xbox_Live_Save_Exporter</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <StartupObject />
+    <ApplicationIcon>Icon colored.ico</ApplicationIcon>
+    <AssemblyName>Game Save Exporter for Xbox</AssemblyName>
+    <Authors>Tom60 &lt;contact.tom60@proton.me&gt;</Authors>
+    <Company></Company>
+    <PackageId>tom60.xboxCloudSaveExporter</PackageId>
+    <Product>Game Save Exporter for Xbox</Product>
+    <Description>Export save files from your Xbox games to a folder. Works with Game Pass and cloud-compatible games. Manually transfer your local saves to Steam or other platforms.</Description>
+    <PackageProjectUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</PackageProjectUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <AssemblyVersion>1.2.0.2</AssemblyVersion>
+    <FileVersion>1.2.0.2</FileVersion>
+    <Version>1.2.0.2</Version>
+    <PackageReleaseNotes />
+    <Title>Game Save Exporter for Xbox</Title>
+    <PackageIcon>Logo 2.3 colored.png</PackageIcon>
+    <RepositoryUrl>https://github.com/Tom60chat/Xbox-Live-Save-Exporter</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Assets\Logo Banner medium 2.png" />
+    <None Remove="Logo Banner long 2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\Store\Logo\Logo 2.3 colored.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Logo Banner medium 2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.8249" />
+    <PackageReference Include="Octokit" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="WinRTInitializeWithWindow.WPF">
+      <HintPath>..\libs\WinRTInitializeWithWindow.WPF.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.de.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.es.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.fr.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.pl.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.pt.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+
+  </ItemGroup>
+
+  <Import Project="..\Xbox Live Save Exporter.Shared\Xbox Live Save Exporter.Shared.projitems" Label="Shared" />
+
+</Project>

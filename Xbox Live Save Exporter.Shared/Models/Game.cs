@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Windows.Management.Deployment;
 using Windows.Storage;
 using Windows.Storage.Streams;
-using Windows.UI.Popups;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 
@@ -16,12 +15,6 @@ namespace Xbox_Live_Save_Exporter
     {
         #region Constructors
         private Game() { }
-        /*private Game(string displayName, string logo, string dataPath)
-        {
-            DisplayName = displayName;
-            Logo = logo;
-            DataPath = dataPath;
-        }*/
         #endregion
 
         #region Variables
@@ -52,11 +45,12 @@ namespace Xbox_Live_Save_Exporter
         /// <returns>The instance</returns>
         public static async Task<Game> Build(string displayName, string logo, string dataPath)
         {
-            var game = new Game(); // displayName, logo, dataPath);
-
-            game.DisplayName = displayName;
-            game.Logo = logo;
-            game.DataPath = dataPath;
+            var game = new Game
+            {
+                DisplayName = displayName,
+                Logo = logo,
+                DataPath = dataPath
+            };
 
             try
             {
@@ -78,7 +72,6 @@ namespace Xbox_Live_Save_Exporter
         {
             var packageManager = new PackageManager();
             var games = new List<Game>();
-            // var packageDirectorys = new DirectoryInfo(LocalPackagesPath.Replace("file:///", string.Empty));
 
             StorageFolder packageDirectorys;
             IStorageItem wgs;
@@ -89,23 +82,15 @@ namespace Xbox_Live_Save_Exporter
             }
             catch
             {
-                var dialog = new MessageDialog("We can't get acces to your saves file, you can't probably do nothings about.\nSorry");
                 return games;
             }
 
-            /*if (packageDirectorys.Exists)
-            {*/
-                foreach (var packageDirectory in await packageDirectorys.GetFoldersAsync())
-                {
+            foreach (var packageDirectory in await packageDirectorys.GetFoldersAsync())
+            {
                 // TryGetItemAsync allow better performance than try catch GetFolderFromPathAsync
                 wgs = await packageDirectory.TryGetItemAsync("SystemAppData\\wgs");
                 if (wgs != null)
                 {
-                    //var wgs = new DirectoryInfo(Path.Combine(packageDirectory.FullName, "SystemAppData\\wgs")); // wgs is for the Xbox Live cloud save folder
-
-                    /*if (wgs.Exists)
-                    {*/
-
                     var packages = packageManager.FindPackagesForUser(string.Empty, packageDirectory.Name);
 
                     if (packages != null)
@@ -119,8 +104,7 @@ namespace Xbox_Live_Save_Exporter
                         }
                     }
                 }
-                }
-            //}
+            }
 
             return games;
         }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -15,8 +15,8 @@
   <mp:PhoneIdentity PhoneProductId="7bee2dce-2b73-427b-8a1d-c7982611c796" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>Xbox Live Save Exporter</DisplayName>
-    <PublisherDisplayName>KatyCorp</PublisherDisplayName>
+    <DisplayName>Xbox Game Save Exporter</DisplayName>
+    <PublisherDisplayName>Kt by Tom OLIVIER</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 

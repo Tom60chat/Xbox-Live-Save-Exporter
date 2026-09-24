@@ -41,9 +41,10 @@ namespace Xbox_Live_Save_Exporter
         /// </summary>
         /// <!--<param name="path">Path to the index container</param>-->
         /// <param name="sFile">Index container file</param>
+        /// <param name="smartNaming">Whether to use smart naming for the folders</param>
         /// <returns>The container and its folders</returns>
         //public static Container TryParse(string path)
-        public static async Task<Container> TryParse(StorageFile file)
+        public static async Task<Container> TryParse(StorageFile file, bool smartNaming = true)
         {
             List<ContainerFolder> folders = new List<ContainerFolder>();
 
@@ -79,15 +80,24 @@ namespace Xbox_Live_Save_Exporter
                     reader.ReadBytes(8);
                 }
 
+                string folderName, secondName, UnknownValue, folderPath = null;
                 // Loop through every folder in the index, and print info about it
                 for (int i = 0; i < numFolders; i++)
                 {
-                    string folderName = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
+                    folderName = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
+                    secondName = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
 
-                    string secondName = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
+                    // Prefer the second name if it looks like a path (contains directory separator)
+                    // Otherwise use the first name, but only if the second is empty or identical
+                    if (smartNaming && !string.IsNullOrEmpty(secondName) && 
+                        (secondName.Contains(System.IO.Path.DirectorySeparatorChar.ToString()) || 
+                         secondName.Contains(System.IO.Path.AltDirectorySeparatorChar.ToString())))
+                    {
+                        folderName = secondName;
+                    }
 
                     // Skip unknown value
-                    string UnknownValue = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
+                    UnknownValue = BinaryReaderHelper.ReadUnicodeString(reader, reader.ReadInt32());
 
                     byte containerId = reader.ReadByte();
 
@@ -109,7 +119,7 @@ namespace Xbox_Live_Save_Exporter
                     // Skip unknown value
                     reader.ReadBytes(0x18);
 
-                    string folderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(file.Path), folderGuid.ToString("N").ToUpper());
+                    folderPath = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(file.Path), folderGuid.ToString("N").ToUpper());
 
                     folders.Add(new ContainerFolder(folderName, containerId, folderGuid, folderPath));
                 }
